@@ -6,16 +6,13 @@ WORKDIR /app
 # 시스템 의존성 설치
 RUN apt-get update && apt-get install -y \
     gcc \
-    g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Python 의존성 파일 복사
+# 의존성 파일 복사 및 설치
 COPY requirements.txt .
-
-# Python 패키지 설치
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 애플리케이션 코드 복사
+# 애플리케이션 파일 복사
 COPY . .
 
 # 환경 변수 설정 (빌드 시 전달받음)
