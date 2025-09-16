@@ -47,12 +47,9 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
         build-args: |
-          AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BUCKET_NAME=${{ secrets.BUCKET_NAME }}
-          AWS_REGION=${{ secrets.AWS_REGION }}
-          EMBEDDING_MODEL_NAME=${{ secrets.EMBEDDING_MODEL_NAME }}
-          DEFAULT_CHUNK_SIZE=${{ secrets.DEFAULT_CHUNK_SIZE }}
-          DEFAULT_OVERLAP=${{ secrets.DEFAULT_OVERLAP }}
-          DEFAULT_BATCH_SIZE=${{ secrets.DEFAULT_BATCH_SIZE }}
-          DEFAULT_TOP_K=${{ secrets.DEFAULT_TOP_K }}
+          AWS_REGION=${{ secrets.AWS_REGION || 'ap-northeast-2' }}
+          EMBEDDING_MODEL_NAME=${{ secrets.EMBEDDING_MODEL_NAME || 'all-MiniLM-L6-v2' }}
+          DEFAULT_CHUNK_SIZE=${{ secrets.DEFAULT_CHUNK_SIZE || '1000' }}
+          DEFAULT_OVERLAP=${{ secrets.DEFAULT_OVERLAP || '200' }}
+          DEFAULT_BATCH_SIZE=${{ secrets.DEFAULT_BATCH_SIZE || '32' }}
+          DEFAULT_TOP_K=${{ secrets.DEFAULT_TOP_K || '5' }}
